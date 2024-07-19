@@ -139,7 +139,7 @@ describe "Test taller literario"{
 	
 	test "El idioma debe ser español"{
 		
-		assert.equals(#{"español"},taller1.idiomas())
+		assert.equals(#{"español"},taller1.idioma())
 	}
 	test "Los autores del taller son Borges  y Sabato"{
 		
@@ -152,6 +152,9 @@ describe "Test taller literario"{
 	test "La actividad no es para broncearse"{
 		
 		assert.notThat(taller1.broncearse())
+	}
+	test "taller con libros del mismo autor"{
+		assert.that(taller2.mismoAutor())
 	}
 	test "La actividad requiere esfuerzo"{
 		

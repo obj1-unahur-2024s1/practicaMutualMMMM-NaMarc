@@ -95,10 +95,10 @@ class TallerLiterario inherits Actividad {
 		return libros.any({l => l.paginas()>500})
 	}
 	method mismoAutor(){
-		return libros.map({l => l.autor()}).size()== 1
+		return libros.map({l => l.autor()}).asSet().size()== 1
 	}
 	override method requiereEsfuerzo(){
-		return (self.libroGrande()or (self.mismoAutor() and libros.size() > 1))
+		return (self.libroGrande()or (self.mismoAutor() and libros.size()>1))
 	}
 	override method broncearse()= false
 	override method esRecomendadaPara(socio){
