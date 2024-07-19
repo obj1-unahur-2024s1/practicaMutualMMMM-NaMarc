@@ -1,0 +1,162 @@
+import actividades.*
+
+describe "Test viaje de playa"{
+	
+	const mardel = new ALaPlaya(idiomas=#{"español"}, longitudPlaya = 1500)
+	
+	test "El idioma debe ser Español"{
+		
+		assert.equals(#{"español"},mardel.idiomas())
+	}
+	test "La longitud debe ser 1500"{
+		
+		assert.equals(1500,mardel.longitudPlaya())
+	}
+	test "Los días que dura deben ser 3"{
+		
+		assert.equals(3,mardel.dias())
+	}
+	test "El viaje es para broncearse"{
+		
+		assert.that(mardel.broncearse())
+	}
+	test "El viaje requiere esfuerzo"{
+		
+		assert.that(mardel.requiereEsfuerzo())
+	}
+	test "El viaje no es interesante"{
+		
+		assert.notThat(mardel.esInteresante())
+	}
+}
+describe "Test Excursión a la Ciudad"{
+	
+	const paris = new ALaCiudad(idiomas=#{"español", "francés", "inglés"}, cantidadExcursiones = 6)
+	
+	test "El idioma debe ser español, francés e inglés"{
+		
+		assert.equals(#{"español","francés","inglés"}, paris.idiomas())
+	}
+	test "Los días que dura deben ser 3"{
+		
+		assert.equals(3, paris.dias())
+	}
+	test "El viaje no es para broncearse"{
+		
+		assert.notThat(paris.broncearse())
+	}
+	test "El viaje requiere esfuerzo"{
+		
+		assert.that(paris.requiereEsfuerzo())
+	}
+	test "El viaje es interesante"{
+		
+		assert.that(paris.esInteresante())
+	}
+}
+describe "Test Excursión a Ciudad Tropical"{
+	
+	const ipanema = new ACiudadTropical(idiomas=#{"español", "portugues", "inglés"}, cantidadExcursiones = 4)
+	
+	test "El idioma debe ser español, francés e inglés"{
+		
+		assert.equals(#{"español","portugues","inglés"}, ipanema.idiomas())
+	}
+	test "Los días que dura deben ser 3"{
+		
+		assert.equals(3, ipanema.dias())
+	}
+	test "El viaje es para broncearse"{
+		
+		assert.that(ipanema.broncearse())
+	}
+	test "El viaje no requiere esfuerzo"{
+		
+		assert.notThat(ipanema.requiereEsfuerzo())
+	}
+	test "El viaje es interesante"{
+		
+		assert.that(ipanema.esInteresante())
+	}
+}
+describe "Test salida de Trekking"{
+	
+	const salto = new SalidaDeTrekin(idiomas=#{"español", "guaraní", "aymara"}, kmSendero = 100, diasDeSolAnual = 130)
+	
+	test "El idioma debe ser español, francés e inglés"{
+		
+		assert.equals(#{"español","guaraní","aymara"}, salto.idiomas())
+	}
+	test "Los días que dura deben ser 2"{
+		
+		assert.equals(2, salto.dias())
+	}
+	test "El viaje no es para broncearse"{
+		
+		assert.notThat(salto.broncearse())
+	}
+	test "El viaje requiere esfuerzo"{
+		
+		assert.that(salto.requiereEsfuerzo())
+	}
+	test "El viaje no es interesante"{
+		
+		assert.notThat(salto.esInteresante())
+	}
+}
+describe "Test clases de gimnasia"{
+	
+	const clase1 = new ClasesDeGimnasia(idiomas=#{"español"})
+	
+	test "El idioma debe ser español"{
+		
+		assert.equals(#{"español"}, clase1.idiomas())
+	}
+	test "Los días que dura deben ser 1"{
+		
+		assert.equals(1, clase1.dias())
+	}
+	test "La actividad no es para broncearse"{
+		
+		assert.notThat(clase1.broncearse())
+	}
+	test "La actividad requiere esfuerzo"{
+		
+		assert.that(clase1.requiereEsfuerzo())
+	}
+	test "La actividad no es interesante"{
+		
+		assert.notThat(clase1.esInteresante())
+	}
+}
+describe "Test taller literario"{
+	
+	const elTunel = new Libro(autor = "Sabato", paginas = 93, idioma = "español")
+	const elAleph = new Libro(autor = "Borges", paginas = 200,idioma = "español")
+	const ficciones = new Libro(autor = "Borges", paginas = 450, idioma = "español")
+	const taller1 = new TallerLiterario(libros=#{elTunel, elAleph})
+	const taller2 = new TallerLiterario(libros=#{elAleph, ficciones})
+	
+	test "El idioma debe ser español"{
+		
+		assert.equals(#{"español"},taller1.idiomas())
+	}
+	test "Los autores del taller son Borges  y Sabato"{
+		
+		assert.equals(#{"Sabato", "Borges"},taller1.autores())
+	}
+	test "Los días que dura deben ser 3"{
+		
+		assert.equals(3, taller1.dias())
+	}
+	test "La actividad no es para broncearse"{
+		
+		assert.notThat(taller1.broncearse())
+	}
+	test "La actividad requiere esfuerzo"{
+		
+		assert.notThat(taller1.requiereEsfuerzo())
+		assert.that(taller2.requiereEsfuerzo())
+	}
+	
+}
